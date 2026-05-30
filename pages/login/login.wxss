@@ -1,0 +1,128 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #1296db 0%, #4da6ff 50%, #f5f5f5 50%);
+  padding: 100rpx 40rpx;
+  box-sizing: border-box;
+}
+
+.logo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 80rpx;
+}
+
+.logo {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 40rpx;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.15);
+  margin-bottom: 30rpx;
+}
+
+.logo-text {
+  font-size: 72rpx;
+  font-weight: 700;
+  color: #1296db;
+}
+
+.app-name {
+  font-size: 48rpx;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 10rpx;
+}
+
+.app-desc {
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.login-form {
+  background: #ffffff;
+  border-radius: 24rpx;
+  padding: 40rpx;
+  box-shadow: 0 8rpx 40rpx rgba(0, 0, 0, 0.1);
+}
+
+.input-item {
+  margin-bottom: 30rpx;
+}
+
+.input-label {
+  font-size: 28rpx;
+  color: #666666;
+  margin-bottom: 16rpx;
+}
+
+.input-box {
+  background: #f8f8f8;
+  border-radius: 12rpx;
+  padding: 28rpx;
+  font-size: 30rpx;
+  border: 2rpx solid transparent;
+  transition: all 0.3s;
+}
+
+.input-box:focus {
+  border-color: #1296db;
+  background: #ffffff;
+}
+
+.error-msg {
+  color: #ff4d4f;
+  font-size: 24rpx;
+  margin-bottom: 20rpx;
+  padding-left: 10rpx;
+}
+
+.checkbox-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40rpx;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+  color: #666666;
+}
+
+.checkbox-item checkbox {
+  margin-right: 12rpx;
+  transform: scale(0.8);
+}
+
+.login-btn {
+  width: 100%;
+  height: 96rpx;
+  background: linear-gradient(135deg, #1296db 0%, #4da6ff 100%);
+  color: #ffffff;
+  border-radius: 48rpx;
+  font-size: 34rpx;
+  font-weight: 500;
+  border: none;
+  margin-bottom: 30rpx;
+}
+
+.login-btn:active {
+  opacity: 0.8;
+}
+
+.register-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26rpx;
+  color: #999999;
+}
+
+.link {
+  color: #1296db;
+  margin-left: 8rpx;
+}

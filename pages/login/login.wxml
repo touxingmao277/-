@@ -1,0 +1,57 @@
+<view class="container">
+  <view class="logo-section">
+    <view class="logo">
+      <text class="logo-text">L</text>
+    </view>
+    <text class="app-name">LYHchat</text>
+    <text class="app-desc">让聊天更有氛围</text>
+  </view>
+  
+  <view class="login-form">
+    <view class="input-item">
+      <view class="input-label">账号</view>
+      <input 
+        class="input-box" 
+        type="text" 
+        placeholder="请输入账号（6-16位字母/数字/下划线）"
+        value="{{username}}"
+        bindinput="handleUsernameInput"
+      />
+    </view>
+    
+    <view class="input-item">
+      <view class="input-label">密码</view>
+      <input 
+        class="input-box" 
+        type="password" 
+        placeholder="请输入密码（6-20位字符）"
+        value="{{password}}"
+        bindinput="handlePasswordInput"
+      />
+    </view>
+    
+    <view class="error-msg" wx:if="{{errorMsg}}">
+      <text>{{errorMsg}}</text>
+    </view>
+    
+    <view class="checkbox-group">
+      <view class="checkbox-item">
+        <checkbox value="rememberMe" checked="{{rememberMe}}" bindchange="toggleRememberMe" />
+        <text>记住密码</text>
+      </view>
+      <view class="checkbox-item">
+        <checkbox value="autoLogin" checked="{{autoLogin}}" bindchange="toggleAutoLogin" />
+        <text>自动登录</text>
+      </view>
+    </view>
+    
+    <button class="btn-primary login-btn" bindtap="handleLogin">
+      <text>登 录</text>
+    </button>
+    
+    <view class="register-link" bindtap="goToRegister">
+      <text>还没有账号？</text>
+      <text class="link">立即注册</text>
+    </view>
+  </view>
+</view>

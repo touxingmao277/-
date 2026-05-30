@@ -1,0 +1,10 @@
+<view class="contact-item" bindtap="handleTap">
+  <view class="avatar" style="background: {{contact.avatar ? 'url(' + contact.avatar + ')' : 'linear-gradient(135deg, #1296db 0%, #4da6ff 100%)'}}">
+    <text wx:if="{{!contact.avatar}}">{{contact.nickname.charAt(0)}}</text>
+  </view>
+  <view class="contact-info">
+    <text class="nickname">{{contact.nickname}}</text>
+    <text class="signature">{{contact.signature || '暂无签名'}}</text>
+  </view>
+  <text class="arrow">›</text>
+</view>

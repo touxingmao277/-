@@ -1,0 +1,82 @@
+<view class="chat-container">
+  <view class="chat-header">
+    <view class="back-btn" bindtap="goBack">
+      <text class="back-icon">‹</text>
+    </view>
+    <view class="header-info">
+      <view class="avatar-wrapper">
+        <image wx:if="{{avatar}}" class="avatar-img" src="{{avatar}}" mode="aspectFill" />
+        <view wx:else class="avatar-default" style="background: linear-gradient(135deg, #1296db 0%, #4da6ff 100%)">
+          <text>{{nickname.charAt(0)}}</text>
+        </view>
+      </view>
+      <text class="nickname">{{nickname}}</text>
+    </view>
+    <view class="header-right">
+      <text class="more-icon">⋯</text>
+    </view>
+  </view>
+  
+  <scroll-view 
+    class="message-list" 
+    scroll-y 
+    scroll-top="{{scrollTop}}"
+    enable-flex
+  >
+    <view 
+      wx:for="{{messages}}" 
+      wx:key="_id" 
+      class="message-item {{item.isSelf ? 'self' : 'other'}}"
+      bindlongpress="handleLongPress"
+      data-message-id="{{item._id}}"
+      data-is-self="{{item.isSelf}}"
+      data-is-revoked="{{item.isRevoked}}"
+    >
+      <view class="avatar-wrapper">
+        <image wx:if="{{item.isSelf ? userAvatar : item.otherAvatar}}" class="avatar-img" src="{{item.isSelf ? userAvatar : item.otherAvatar}}" mode="aspectFill" />
+        <view wx:else class="avatar-default" style="background: {{item.isSelf ? 'linear-gradient(135deg, #1296db 0%, #4da6ff 100%)' : 'linear-gradient(135deg, #67c23a 0%, #85ce61 100%)'}}">
+          <text>{{item.isSelf ? '我' : item.otherInitial}}</text>
+        </view>
+      </view>
+      <view class="message-bubble">
+        <view wx:if="{{item.type === 'text'}}" class="text-message">
+          <text>{{item.content}}</text>
+        </view>
+        <image 
+          wx:else if="{{item.type === 'image'}}" 
+          class="image-message" 
+          src="{{item.content}}" 
+          mode="aspectFit"
+          bindtap="previewImage"
+          data-src="{{item.content}}"
+        />
+        <view wx:if="{{item.isRevoked}}" class="revoked-message">
+          <text>{{item.isSelf ? '你' : '对方'}}已撤回一条消息</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  
+  <view class="input-bar">
+    <view class="input-left">
+      <view class="icon-btn" bindtap="handleImageSend">
+        <text>📷</text>
+      </view>
+    </view>
+    <input 
+      class="input-box" 
+      type="text" 
+      placeholder="输入消息..."
+      value="{{inputText}}"
+      bindinput="handleInput"
+      bindconfirm="handleSend"
+    />
+    <button 
+      class="send-btn" 
+      bindtap="handleSend"
+      disabled="{{!inputText || inputText.trim().length === 0}}"
+    >
+      <text>发送</text>
+    </button>
+  </view>
+</view>

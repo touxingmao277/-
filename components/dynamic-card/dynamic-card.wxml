@@ -1,0 +1,41 @@
+<view class="dynamic-card">
+  <view class="card-header">
+    <view class="avatar" style="background: {{dynamic.avatar ? 'url(' + dynamic.avatar + ')' : 'linear-gradient(135deg, #1296db 0%, #4da6ff 100%)'}}">
+      <text wx:if="{{!dynamic.avatar}}">{{dynamic.nickname.charAt(0)}}</text>
+    </view>
+    <view class="user-info">
+      <text class="nickname">{{dynamic.nickname}}</text>
+      <text class="time">{{formatTime(dynamic.createdAt)}}</text>
+    </view>
+  </view>
+  
+  <text class="content">{{dynamic.content}}</text>
+  
+  <view wx:if="{{dynamic.images && dynamic.images.length > 0}}" class="image-grid">
+    <image 
+      wx:for="{{dynamic.images}}" 
+      wx:for-item="img"
+      wx:key="index"
+      class="dynamic-image" 
+      src="{{img}}" 
+      mode="aspectFill"
+      bindtap="previewImage"
+      data-src="{{img}}"
+    />
+  </view>
+  
+  <view class="card-footer">
+    <view class="action-item" bindtap="handleLike">
+      <text class="action-icon">{{dynamic.isLiked ? '❤️' : '🤍'}}</text>
+      <text class="action-text">{{dynamic.likes}}</text>
+    </view>
+    <view class="action-item" bindtap="handleComment">
+      <text class="action-icon">💬</text>
+      <text class="action-text">{{dynamic.comments}}</text>
+    </view>
+    <view class="action-item">
+      <text class="action-icon">🔗</text>
+      <text class="action-text">分享</text>
+    </view>
+  </view>
+</view>

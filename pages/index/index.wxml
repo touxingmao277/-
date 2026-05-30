@@ -1,0 +1,50 @@
+<view class="container">
+  <view class="header">
+    <text class="title">消息</text>
+    <view class="header-right">
+      <view class="add-btn" bindtap="goToSearch">
+        <text>+</text>
+      </view>
+    </view>
+  </view>
+
+  <scroll-view
+    class="conversation-list"
+    scroll-y
+    bindscrolltolower="loadMore"
+    refresher-enabled
+    bindrefresherrefresh="onPullDownRefresh"
+    refresher-triggered="{{loading}}"
+  >
+    <view wx:if="{{!loading && conversations.length === 0}}" class="empty-state">
+      <view class="empty-icon">💬</view>
+      <text class="empty-text">暂无消息</text>
+      <text class="empty-desc">去添加好友开始聊天吧</text>
+    </view>
+
+    <view
+      wx:for="{{conversations}}"
+      wx:key="_id"
+      class="conversation-item"
+      bindtap="goToChat"
+      data-user-id="{{item.otherUser._id}}"
+      data-nickname="{{item.otherUser.nickname}}"
+      data-avatar="{{item.otherUser.avatar}}"
+    >
+      <view class="avatar" style="background: {{item.otherUser.avatar ? 'url(' + item.otherUser.avatar + ')' : 'linear-gradient(135deg, #1296db 0%, #4da6ff 100%)'}}">
+        <text wx:if="{{!item.otherUser.avatar}}">{{item.otherUser.nickname.charAt(0)}}</text>
+      </view>
+      <view class="conversation-content">
+        <view class="conversation-header">
+          <text class="nickname">{{item.otherUser.nickname}}</text>
+          <text class="time">{{item.formattedTime}}</text>
+        </view>
+        <text class="last-message">{{item.isRevoked ? '对方已撤回一条消息' : item.content}}</text>
+      </view>
+    </view>
+
+    <view wx:if="{{loading}}" class="loading-more">
+      <text>加载中...</text>
+    </view>
+  </scroll-view>
+</view>

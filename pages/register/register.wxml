@@ -1,0 +1,55 @@
+<view class="container">
+  <view class="header">
+    <view class="back-btn" bindtap="goBack">
+      <text class="back-icon">‹</text>
+    </view>
+    <text class="title">注册账号</text>
+    <view class="placeholder"></view>
+  </view>
+  
+  <view class="register-form">
+    <view class="input-item">
+      <view class="input-label">账号</view>
+      <input 
+        class="input-box" 
+        type="text" 
+        placeholder="请输入账号（6-16位字母/数字/下划线）"
+        value="{{username}}"
+        bindinput="handleUsernameInput"
+      />
+      <text class="error-text" wx:if="{{usernameError}}">{{usernameError}}</text>
+    </view>
+    
+    <view class="input-item">
+      <view class="input-label">密码</view>
+      <input 
+        class="input-box" 
+        type="password" 
+        placeholder="请输入密码（6-20位字符）"
+        value="{{password}}"
+        bindinput="handlePasswordInput"
+      />
+      <text class="error-text" wx:if="{{passwordError}}">{{passwordError}}</text>
+    </view>
+    
+    <view class="input-item">
+      <view class="input-label">确认密码</view>
+      <input 
+        class="input-box" 
+        type="password" 
+        placeholder="请再次输入密码"
+        value="{{confirmPassword}}"
+        bindinput="handleConfirmPasswordInput"
+      />
+      <text class="error-text" wx:if="{{confirmError}}">{{confirmError}}</text>
+    </view>
+    
+    <view class="error-msg" wx:if="{{errorMsg}}">
+      <text>{{errorMsg}}</text>
+    </view>
+    
+    <button class="btn-primary register-btn" bindtap="handleRegister">
+      <text>注 册</text>
+    </button>
+  </view>
+</view>

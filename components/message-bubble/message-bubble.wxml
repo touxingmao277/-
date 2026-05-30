@@ -1,0 +1,25 @@
+<view 
+  class="message-item"
+  class="{{isSelf ? 'self' : 'other'}}"
+  bindlongpress="handleLongPress"
+>
+  <view class="avatar" style="background: {{isSelf ? 'linear-gradient(135deg, #1296db 0%, #4da6ff 100%)' : 'linear-gradient(135deg, #67c23a 0%, #85ce61 100%)'}}">
+    <text>{{isSelf ? '我' : '友'}}</text>
+  </view>
+  <view class="message-bubble">
+    <view wx:if="{{message.type === 'text'}}" class="text-message">
+      <text>{{message.content}}</text>
+    </view>
+    <image 
+      wx:else if="{{message.type === 'image'}}" 
+      class="image-message" 
+      src="{{message.content}}" 
+      mode="aspectFit"
+      bindtap="previewImage"
+      data-src="{{message.content}}"
+    />
+    <view wx:if="{{message.isRevoked}}" class="revoked-message">
+      <text>{{isSelf ? '你' : '对方'}}已撤回一条消息</text>
+    </view>
+  </view>
+</view>

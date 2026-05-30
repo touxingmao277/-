@@ -1,0 +1,41 @@
+.message-item {
+  display: flex;
+  margin-bottom: 30rpx;
+}
+
+.message-item.self {
+  flex-direction: row-reverse;
+}
+
+.message-item.self .message-bubble {
+  background: #1296db;
+}
+
+.message-item.self .text-message text {
+  color: #ffffff;
+}
+
+.message-bubble {
+  max-width: 70%;
+  border-radius: 24rpx;
+  padding: 20rpx 24rpx;
+  margin: 0 16rpx;
+}
+
+.text-message text {
+  font-size: 30rpx;
+  color: #333333;
+  word-break: break-all;
+}
+
+.image-message {
+  max-width: 300rpx;
+  max-height: 300rpx;
+  border-radius: 12rpx;
+}
+
+.revoked-message {
+  font-size: 26rpx;
+  color: #999999;
+  text-align: center;
+}

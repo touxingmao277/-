@@ -1,0 +1,81 @@
+<view class="container">
+  <view class="header">
+    <text class="title">动态</text>
+    <view class="publish-btn" bindtap="goToPublish">
+      <text>+ 发布</text>
+    </view>
+  </view>
+
+  <scroll-view
+    class="dynamic-list"
+    scroll-y
+    bindscrolltolower="loadMore"
+    refresher-enabled
+    bindrefresherrefresh="onPullDownRefresh"
+    refresher-triggered="{{loading}}"
+  >
+    <view wx:if="{{!loading && dynamics.length === 0}}" class="empty-state">
+      <view class="empty-icon">📝</view>
+      <text class="empty-text">暂无动态</text>
+      <text class="empty-desc">点击右上角发布动态</text>
+    </view>
+
+    <view wx:for="{{dynamics}}" wx:key="_id" class="dynamic-card">
+      <view class="card-header">
+        <view class="avatar" style="background: {{item.avatar ? 'url(' + item.avatar + ')' : 'linear-gradient(135deg, #1296db 0%, #4da6ff 100%)'}}">
+          <text wx:if="{{!item.avatar}}">{{item.nickname.charAt(0)}}</text>
+        </view>
+        <view class="user-info">
+          <text class="nickname">{{item.nickname}}</text>
+          <text class="time">{{item.formattedTime}}</text>
+        </view>
+      </view>
+
+      <text class="content">{{item.content}}</text>
+
+      <view wx:if="{{item.images && item.images.length > 0}}" class="image-grid">
+        <image
+          wx:for="{{item.images}}"
+          wx:for-item="img"
+          wx:key="index"
+          class="dynamic-image"
+          src="{{img}}"
+          mode="aspectFill"
+          bindtap="previewImage"
+          data-src="{{img}}"
+        />
+      </view>
+
+      <view class="card-footer">
+        <view class="action-item" bindtap="handleLike" data-dynamic-id="{{item._id}}">
+          <text class="action-icon">{{item.isLiked ? '❤️' : '🤍'}}</text>
+          <text class="action-text">{{item.likes}}</text>
+        </view>
+        <view class="action-item" bindtap="viewComments" data-dynamic-id="{{item._id}}">
+          <text class="action-icon">💬</text>
+          <text class="action-text">{{item.comments}}</text>
+        </view>
+        <view class="action-item" bindtap="showCommentInput" data-dynamic-id="{{item._id}}">
+          <text class="action-icon">💬</text>
+          <text class="action-text">评论</text>
+        </view>
+      </view>
+
+      <view wx:if="{{activeCommentId === item._id}}" class="comment-input-bar">
+        <input
+          class="comment-input"
+          type="text"
+          placeholder="输入评论..."
+          value="{{commentInput}}"
+          bindinput="handleCommentInput"
+          bindconfirm="handleSendComment"
+        />
+        <button class="send-comment-btn" bindtap="handleSendComment">发送</button>
+      </view>
+    </view>
+
+    <view wx:if="{{loading}}" class="loading-more">
+      <text>加载中...</text>
+    </view>
+  </scroll-view>
+</view>

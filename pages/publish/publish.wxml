@@ -1,0 +1,66 @@
+<view class="container">
+  <view class="header">
+    <view class="back-btn" bindtap="goBack">
+      <text class="back-icon">‹</text>
+    </view>
+    <text class="title">发布动态</text>
+    <button class="publish-btn" bindtap="handlePublish">发布</button>
+  </view>
+
+  <view class="publish-form">
+    <textarea
+      class="content-textarea"
+      placeholder="分享你的心情..."
+      value="{{content}}"
+      bindinput="handleContentInput"
+      maxlength="500"
+    />
+
+    <view class="char-count">
+      <text>{{content.length}}/500</text>
+    </view>
+
+    <view class="image-section">
+      <view class="section-title">图片</view>
+      <view class="image-list">
+        <view
+          wx:for="{{images}}"
+          wx:key="index"
+          class="image-item"
+        >
+          <image class="image-preview" src="{{item}}" mode="aspectFill" />
+          <view class="remove-btn" bindtap="removeImage" data-index="{{index}}">
+            <text>×</text>
+          </view>
+        </view>
+        <view
+          wx:if="{{images.length < 9}}"
+          class="add-image-btn"
+          bindtap="chooseImage"
+        >
+          <text>+</text>
+        </view>
+      </view>
+      <text class="image-hint">最多上传9张图片</text>
+    </view>
+
+    <view class="visibility-section">
+      <view class="section-title">可见范围</view>
+      <view class="visibility-options">
+        <view
+          wx:for="{{visibilityOptions}}"
+          wx:key="value"
+          class="visibility-option {{visibility === item.value ? 'active' : ''}}"
+          bindtap="setVisibility"
+          data-value="{{item.value}}"
+        >
+          <text>{{item.label}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="error-msg" wx:if="{{errorMsg}}">
+      <text>{{errorMsg}}</text>
+    </view>
+  </view>
+</view>

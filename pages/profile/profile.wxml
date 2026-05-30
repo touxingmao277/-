@@ -1,0 +1,21 @@
+<view class="container">
+  <view class="profile-header">
+    <view class="avatar avatar-large" style="background: {{userInfo.avatar ? 'url(' + userInfo.avatar + ')' : 'linear-gradient(135deg, #1296db 0%, #4da6ff 100%)'}}">
+      <text wx:if="{{!userInfo.avatar}}">{{userInfo.nickname.charAt(0)}}</text>
+    </view>
+    <view class="user-info">
+      <text class="nickname">{{userInfo.nickname}}</text>
+      <text class="username">@{{userInfo.username}}</text>
+      <text class="signature">{{userInfo.signature}}</text>
+    </view>
+    <view class="edit-btn" bindtap="goToSettings">
+      <text>编辑</text>
+    </view>
+  </view>
+  
+  <view class="logout-section">
+    <button class="logout-btn" bindtap="handleLogout">
+      <text>退出登录</text>
+    </button>
+  </view>
+</view>

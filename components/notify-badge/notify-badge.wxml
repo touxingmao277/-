@@ -1,0 +1,3 @@
+<view wx:if="{{count > 0}}" class="notify-badge" class="{{size}}">
+  <text class="badge-text">{{count > 99 ? '99+' : count}}</text>
+</view>

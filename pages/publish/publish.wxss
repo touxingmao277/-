@@ -1,0 +1,163 @@
+.container {
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60rpx 30rpx 30rpx;
+  background: #ffffff;
+}
+
+.back-btn {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-icon {
+  font-size: 48rpx;
+  color: #333333;
+}
+
+.title {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #333333;
+}
+
+.publish-btn {
+  background: #1296db;
+  padding: 16rpx 32rpx;
+  border-radius: 32rpx;
+  color: #ffffff;
+  font-size: 28rpx;
+}
+
+.publish-form {
+  padding: 30rpx;
+}
+
+.content-textarea {
+  width: 100%;
+  height: 300rpx;
+  background: #ffffff;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  font-size: 30rpx;
+  line-height: 1.6;
+}
+
+.char-count {
+  text-align: right;
+  margin-bottom: 30rpx;
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.image-section {
+  margin-bottom: 30rpx;
+}
+
+.section-title {
+  font-size: 28rpx;
+  color: #666666;
+  margin-bottom: 16rpx;
+}
+
+.image-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+}
+
+.image-item {
+  position: relative;
+  width: 180rpx;
+  height: 180rpx;
+}
+
+.image-preview {
+  width: 100%;
+  height: 100%;
+  border-radius: 12rpx;
+}
+
+.remove-btn {
+  position: absolute;
+  top: -12rpx;
+  right: -12rpx;
+  width: 40rpx;
+  height: 40rpx;
+  background: #ff4d4f;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-btn text {
+  color: #ffffff;
+  font-size: 32rpx;
+  line-height: 1;
+}
+
+.add-image-btn {
+  width: 180rpx;
+  height: 180rpx;
+  background: #ffffff;
+  border: 2rpx dashed #cccccc;
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-image-btn text {
+  font-size: 48rpx;
+  color: #cccccc;
+}
+
+.image-hint {
+  font-size: 24rpx;
+  color: #999999;
+  margin-top: 12rpx;
+}
+
+.visibility-section {
+  margin-bottom: 30rpx;
+}
+
+.visibility-options {
+  display: flex;
+  gap: 20rpx;
+}
+
+.visibility-option {
+  flex: 1;
+  height: 72rpx;
+  background: #ffffff;
+  border-radius: 36rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: #666666;
+  border: 2rpx solid transparent;
+}
+
+.visibility-option.active {
+  background: #e8f4fc;
+  border-color: #1296db;
+  color: #1296db;
+}
+
+.error-msg {
+  color: #ff4d4f;
+  font-size: 26rpx;
+  text-align: center;
+}

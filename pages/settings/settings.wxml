@@ -1,0 +1,129 @@
+<view class="container">
+  <view class="header">
+    <view class="back-btn" bindtap="goBack">
+      <text class="back-icon">‹</text>
+    </view>
+    <text class="title">设置</text>
+    <view class="placeholder"></view>
+  </view>
+
+  <view class="tabs">
+    <view
+      wx:for="{{['profile', 'password', 'delete']}}"
+      wx:key="this"
+      class="tab-item {{activeTab === item ? 'active' : ''}}"
+      bindtap="setActiveTab"
+      data-tab="{{item}}"
+    >
+      <text>{{item === 'profile' ? '个人信息' : item === 'password' ? '修改密码' : '注销账号'}}</text>
+    </view>
+  </view>
+
+  <view class="content">
+    <view wx:if="{{activeTab === 'profile'}}" class="profile-form">
+      <view class="avatar-section">
+        <view class="avatar avatar-large" style="background: {{avatar ? 'url(' + avatar + ')' : 'linear-gradient(135deg, #1296db 0%, #4da6ff 100%)'}}">
+          <text wx:if="{{!avatar}}">{{nickname.charAt(0) || 'U'}}</text>
+        </view>
+        <view class="avatar-btn" bindtap="chooseAvatar">
+          <text>更换头像</text>
+        </view>
+      </view>
+
+      <view class="input-item">
+        <view class="input-label">昵称</view>
+        <input
+          class="input-box"
+          type="text"
+          placeholder="请输入昵称"
+          value="{{nickname}}"
+          bindinput="handleNicknameInput"
+        />
+      </view>
+
+      <view class="input-item">
+        <view class="input-label">签名</view>
+        <textarea
+          class="textarea-box"
+          placeholder="请输入签名"
+          value="{{signature}}"
+          bindinput="handleSignatureInput"
+        />
+      </view>
+
+      <button class="btn-primary mt-lg" bindtap="handleSaveProfile">保存修改</button>
+    </view>
+
+    <view wx:if="{{activeTab === 'password'}}" class="password-form">
+      <view class="input-item">
+        <view class="input-label">原密码</view>
+        <input
+          class="input-box"
+          type="password"
+          placeholder="请输入原密码"
+          value="{{oldPassword}}"
+          bindinput="handleOldPasswordInput"
+        />
+      </view>
+
+      <view class="input-item">
+        <view class="input-label">新密码</view>
+        <input
+          class="input-box"
+          type="password"
+          placeholder="请输入新密码（6-20位）"
+          value="{{newPassword}}"
+          bindinput="handleNewPasswordInput"
+        />
+      </view>
+
+      <view class="input-item">
+        <view class="input-label">确认新密码</view>
+        <input
+          class="input-box"
+          type="password"
+          placeholder="请再次输入新密码"
+          value="{{confirmPassword}}"
+          bindinput="handleConfirmPasswordInput"
+        />
+      </view>
+
+      <button class="btn-primary mt-lg" bindtap="handleChangePassword">修改密码</button>
+    </view>
+
+    <view wx:if="{{activeTab === 'delete'}}" class="delete-form">
+      <view class="warning-box">
+        <text class="warning-icon">⚠️</text>
+        <text class="warning-text">注销后将永久删除您的账号和所有数据，且无法恢复！</text>
+      </view>
+
+      <view class="input-item">
+        <view class="input-label">密码</view>
+        <input
+          class="input-box"
+          type="password"
+          placeholder="请输入密码确认身份"
+          value="{{deletePassword}}"
+          bindinput="handleDeletePasswordInput"
+        />
+      </view>
+
+      <view class="input-item">
+        <view class="input-label">确认注销</view>
+        <input
+          class="input-box"
+          type="text"
+          placeholder="请输入「确认注销」"
+          value="{{deleteConfirm}}"
+          bindinput="handleDeleteConfirmInput"
+        />
+      </view>
+
+      <button class="btn-danger mt-lg" bindtap="handleDeleteAccount">注销账号</button>
+    </view>
+
+    <view class="error-msg" wx:if="{{errorMsg}}">
+      <text>{{errorMsg}}</text>
+    </view>
+  </view>
+</view>

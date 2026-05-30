@@ -1,0 +1,56 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/register/register",
+    "pages/index/index",
+    "pages/chat/chat",
+    "pages/profile/profile",
+    "pages/contacts/contacts",
+    "pages/dynamic/dynamic",
+    "pages/publish/publish",
+    "pages/search/search",
+    "pages/settings/settings",
+    "pages/add-friend/add-friend",
+    "pages/friend-request/friend-request"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "LYHchat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#1296db",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "消息",
+        "iconPath": "static/icons/message.png",
+        "selectedIconPath": "static/icons/message-active.png"
+      },
+      {
+        "pagePath": "pages/contacts/contacts",
+        "text": "联系人",
+        "iconPath": "static/icons/contacts.png",
+        "selectedIconPath": "static/icons/contacts-active.png"
+      },
+      {
+        "pagePath": "pages/dynamic/dynamic",
+        "text": "动态",
+        "iconPath": "static/icons/dynamic.png",
+        "selectedIconPath": "static/icons/dynamic-active.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "static/icons/profile.png",
+        "selectedIconPath": "static/icons/profile-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
